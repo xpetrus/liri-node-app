@@ -31,6 +31,17 @@ function readLine(type, input){
     
     }
     else if(type === `spotify-this-song`){
+        spotify.search({ type: 'track', query: input}, function(err, data) {
+            if (err) {
+              return console.log('Error occurred: ' + err);
+            }
+           //console.log(data);
+          for (var i = 0; i < data.tracks.items.length; i++){
+              //console.log(data.tracks.items[i]);
+              console.log("\nArtist: "+data.tracks.items[i].artists[0].name+"\nSong Name: "+
+              data.tracks.items[i].name+"\nAlbum Name: "+data.tracks.items[i].album.name+"\n\n------");
+          }
+          });
     
     }
     else if(type ===  `movie-this`){
