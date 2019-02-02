@@ -2,6 +2,7 @@ require("dotenv").config();
 var Spotify = require('node-spotify-api');
 var axios = require("axios");
 var fs = require("fs");
+var moment = require("moment");
 var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
@@ -22,7 +23,7 @@ function readLine(type, input){
                     console.log("\n Venue Name: "+response.data[i].venue.name +"\n Venue Location: "+
                     response.data[i].venue.city+", "+response.data[i].venue.region+" "+
                     response.data[i].venue.country+"\n Date of the Event: "+
-                    response.data[i].datetime+"\n\n----------");
+                    moment(response.data[i].datetime).format('l')+"\n\n----------");
     
                 }
             }
